@@ -66,7 +66,7 @@ This script filters the augmented data by retrieving unlabeled instances that ar
 
 Example usage in the Jupyter notebook: `/notebooks/textgen_demo.ipynb`
 
-For augmenting the data run function apply_filtering():
+For filtering the data run function apply_filtering():
 
 ```python
 """
