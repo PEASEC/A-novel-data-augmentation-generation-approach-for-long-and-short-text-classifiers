@@ -97,11 +97,7 @@ The `notebooks/` directory contains the following:
 
 ## Installation
 
-To run the scripts and notebooks, you need to install the required dependencies. You can do this by running:
-
-```bash
-pip install -r requirements.txt
-```
+To run the scripts and notebooks, you need to install the required dependencies.
 
 ## Contributing
 
