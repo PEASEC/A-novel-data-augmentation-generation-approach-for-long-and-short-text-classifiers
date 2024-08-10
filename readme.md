@@ -26,11 +26,15 @@ This script performs data augmentation using GPT-2.
 
 #### Usage
 
-```python
-# Example usage in a Jupyter notebook
-/notebooks/textgen_demo.ipynb
+Example usage in the Jupyter notebook: `/notebooks/textgen_demo.ipynb`
 
 For augmenting the data run function apply_gpt():
+
+```python
+"""
+    function for generating data according to the GPT-2 data augmentation process (see description of the whole script).
+    The positive class of the given data set will be augmented.
+
     :param path_of_dataset: path of the dataset
     :param model_name: the GPT-2 model that should be used for generation.
         "124M": small model
@@ -50,15 +54,9 @@ For augmenting the data run function apply_gpt():
     :param verbose: having several print statements
     :return: the generated data, the positive training data (important for the bert filtering that should be called
         afterwards), and the path of the generated data
-
+"""
 ```
 
-#### Experimental Code
-
-```python
-# Experimental usage in a Jupyter notebook
-/notebooks/textgeneration_gpt.ipynb
-```
 
 ### bert_filtering.py
 
@@ -66,16 +64,27 @@ This script filters the augmented data by retrieving unlabeled instances that ar
 
 #### Usage
 
-```python
-# Example usage in a Jupyter notebook
-/notebooks/textgen_demo.ipynb
-```
+Example usage in the Jupyter notebook: `/notebooks/textgen_demo.ipynb`
 
-#### Experimental Code
+For augmenting the data run function apply_filtering():
 
 ```python
-# Experimental usage in a Jupyter notebook
-/notebooks/semi_supervised_sbert.ipynb
+"""
+    function that applies the filtering, which returns the unlabeled instances (from unlabeled_data) that are close
+    (or distant @see :param distant_instances) to the centroid of the reference_data. The instances are sorted
+    according to the distance
+
+    :param reference_data: the data set from which the unlabeled data should be compared
+    :param unlabeled_data: the data that should be labeled
+    :param close_instances: stating weather distant or close instances should be filtered
+    :param sentence_transformer: transformer model @see https://github.com/UKPLab/sentence-transformers for more models
+    :param quantile_threshold: defining the quantile of the initial reference data that should be removed if
+        the reference_data would be used in comparison with itself. The interpretation behind this is that some examples
+        of the reference data are too close to the decision border, which should not define the distance threshold
+    :param verbose: having several print statements
+    :return: returns the unlabeled instances that are close (or distant) to the reference_data (sorted by their
+        distance)
+"""
 ```
 
 ## Notebooks
