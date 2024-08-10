@@ -14,19 +14,43 @@ The codebase provides tools for augmenting datasets in Natural Language Processi
 
 ## Scripts
 
-### gpt_da.py
-
-This script performs data augmentation using GPT-2. The process consists of several steps:
+The process consists of several steps:
 
 1. Fine-tuning GPT-2 on the positive instances of the training data.
 2. Using a special start-of-data token along with titles as prefixes for generating new instances.
 3. (Recommended) Filtering the generated instances using `bert_filtering.py` to ensure they represent the original class well.
+
+### gpt_da.py
+
+This script performs data augmentation using GPT-2. 
 
 #### Usage
 
 ```python
 # Example usage in a Jupyter notebook
 /notebooks/textgen_demo.ipynb
+
+For augmenting the data run function apply_gpt():
+    :param path_of_dataset: path of the dataset
+    :param model_name: the GPT-2 model that should be used for generation.
+        "124M": small model
+        "355M": medium model
+        "774M": large model (finetuning may fail - not tested)
+        "1558M": extra large model (may not work at all)
+    :param steps: steps indicate how long the GPT-2 model should be finetuned. It is advisable to run the model till
+        the average loss is about 0.2. If the default 2000 steps are note sufficient you can run this function again
+        to train it further (the saved model will be loaded if another call is performed, when :param overwrite is False
+    :param overwrite: If True the saved model for this specific data set will be discarded. Otherwise the old model
+        for this data set will be restored and the finetuning will be continued
+    :param temperature: temperature indicates how creative the generated text should be. The higher the more creative
+        the texts will be. According to the authors a number between 0.7 and 1.0 should work  well
+    :param nsamples: nsamples states how many instances per training instance should be generated
+    :param title_token: token that proceeds the title
+    :param body_token: token that proceeds the body
+    :param verbose: having several print statements
+    :return: the generated data, the positive training data (important for the bert filtering that should be called
+        afterwards), and the path of the generated data
+
 ```
 
 #### Experimental Code
