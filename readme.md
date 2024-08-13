@@ -2,6 +2,10 @@
 
 This repository contains the scripts and notebooks for the paper "Data augmentation in natural language processing: a novel text generation approach for long and short text classifiers" by Markus Bayer, Marc-André Kaufhold, Björn Buchhold, Marcel Keller, Jörg Dallmeyer, and Christian Reuter.
 
+## Contact and Support
+
+If you have any questions, need access to datasets or the complete research data, or if you encounter any bugs, please feel free to contact me!
+
 ## Overview
 
 The codebase provides tools for augmenting datasets in Natural Language Processing (NLP) tasks using the advanced model GPT-2. The augmentation process aims to improve the performance of text classifiers for both long and short texts by generating additional data and filtering it to ensure quality.
